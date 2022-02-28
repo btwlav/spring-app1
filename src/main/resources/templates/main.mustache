@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <title>Hello!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+<div>
+    <form method="post" action="/addStudent">
+        <input type="text" name="fio" placeholder="Type student fio"/>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        <button type="submit">Insert</button>
+    </form>
+</div>
+<div>
+    <form method="get" action="/">
+        <input type="text" name="fioFilter"/>
+        <button type="submit">Find</button>
+    </form>
+</div>
+<label>Students list</label>
+{{#students}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{fio}}</span>
+        <span>{{getStringBdate}}</span>
+    </div>
+{{/students}}
+
+</body>
+</html>
